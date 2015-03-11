@@ -1,0 +1,412 @@
+<html>
+<head>
+<title>CS 589 Project</title>
+<link href='http://fonts.googleapis.com/css?family=Nunito:300|Crimson+Text|Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" title="Default" href="styles/github.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>  
+
+<link rel="stylesheet" href="highlighting/styles/default.css">
+<script src="highlighting/highlight.pack.js"></script>
+
+<style type="text/css">
+body {
+	margin: 0px;
+	width: 100%;
+	font-family: 'Crimson Text', serif;
+	font-size: 20px;
+	background: #fcfcfc;
+}
+h1 {
+	font-family: 'Nunito', sans-serif;
+	font-weight: normal;
+	font-size: 28px;
+	margin: 25px 0px 0px 0px;
+	text-transform: lowercase;
+
+}
+
+h2 {
+	font-family: 'Nunito', sans-serif;
+	font-weight: normal;
+	font-size: 32px;
+	margin: 15px 0px 35px 0px;
+	color: #333;	
+	word-spacing: 3px;
+}
+
+h3 {
+	font-family: 'Nunito', sans-serif;
+	font-weight: normal;
+	font-size: 26px;
+	margin: 10px 0px 10px 0px;
+	color: #333;
+	word-spacing: 2px;
+}
+h4 {
+	font-family: 'Nunito', sans-serif;
+	font-weight: normal;
+	font-size: 22px;
+	margin: 10px 0px 10px 0px;
+	color: #333;
+	word-spacing: 2px;
+}
+
+h5 {
+	font-family: 'Nunito', sans-serif;
+	font-weight: normal;
+	font-size: 18px;
+	margin: 10px 0px 10px 0px;
+	color: #111;
+	word-spacing: 2px;
+}
+
+p, li {
+	color: #444;
+}
+
+a {
+	color: #DE3737;
+}
+
+.container {
+	margin: 0px auto 0px auto;
+	width: 960px;
+}
+
+#header {
+	background: #333;
+	width: 100%;
+}
+
+#headersub {
+	color: #ccc;
+	width: 960px;
+	margin: 0px auto 0px auto;
+	padding: 20px 0px 20px 0px;
+}
+
+.chart {
+	width: 480px;
+}
+.lol {
+	font-size: 16px;
+	color: #888;
+	font-style: italic;
+}
+.sep {
+	height: 1px;
+	width: 100%;
+	background: #999;
+	margin: 20px 0px 20px 0px;
+}
+.footer{
+	font-size: 16px;
+}
+.latex {
+	width: 100%;
+}
+
+.latex img {
+	display: block;
+	margin: 0px auto 0px auto;
+}
+
+pre {
+	font-family: 'Droid Sans Mono';
+	font-size: 14px;
+}
+
+td img {
+  vertical-align: middle;
+}
+
+#contents a {
+}
+</style>
+<script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+</script>
+</head>
+<body>
+<div id="header" >
+<div id="headersub">
+<h1>Alex Perepechko & Laura Uribe <span style="color: #DE3737"></span></h1>
+</div>
+</div>
+<div class="container">
+<h2>CSC 589 AU / Homework 3 / Image Blending Using Pyramids</h2>
+
+<div style="float: right; padding: 20px">
+<img src="Pyramid_blending_apporange.jpg" />
+<p style="font-size: 14px">Example of Blended Image</p>
+</div>
+
+<div style="clear:both">
+<h3>IMAGES</h3>
+
+<p> Base Images </p>
+<ol>
+<li>Apple </li>
+<img src="apple.jpg">
+<li>Grass 1</li>
+<img src="grass1.jpg">
+<li>Grass 2</li>
+<img src="grass2.jpg">
+<li>Seattle</li>
+<img src="seattle.jpg">
+<li>New York</li>
+<img src="newyork.jpg">
+<li>Ocean 1</li>
+<img src="ocean1.jpeg">
+<li>Ocean 2</li>
+<img src="ocean2.jpg">
+<li>Orange</li>
+<img src="orange.jpg">
+<li>Apple & Orange</li>
+<img src="Direct_appleorange_blending.jpg">
+</ol>
+
+<p> 	GAUSSIAN PYRAMIDS: Several images were used to create Gaussian and Laplacian pyramids. These images were loaded into the program using the OpenCV library, cv2.  Once these images were loaded, the function "GaussianPyr" was created. This function made a a Gaussian pyramid of the images by going through each pixel and decomposing them to make the small pyramids. Then, another image is used to create the larger Gaussian part of te pyramids. LAPLACIAN PYRAMIDS: A similar process to the one done for Gaussian pyramids is done for Laplacian pyramids as well. The difference between the two is that Laplacian pyramids have a Gaussian blur on their images, and then they are up- and sub-sampled. </p>
+
+<p> Apple Images in Gaussian According to Size </p>
+<ol>
+<li>Apple Gaussian 1</li>
+<img src="AppleGausian1.jpg">
+<li>Apple Gaussian 2</li>
+<img src="AppleGausian2.jpg">
+<li>Apple Gaussian 3</li>
+<img src="AppleGausian3.jpg">
+<li>Apple Gaussian 4</li>
+<img src="AppleGausian4.jpg">
+<li>Apple Gaussian 5</li>
+<img src="AppleGausian5.jpg">
+</ol>
+
+<p> Grass 1 Images in Gaussian According to Size </p>
+<ol>
+<li>Grass 1 Gaussian 1</li>
+<img src="grass1Gausian1.jpg">
+<li>Grass 1 Gaussian 2</li>
+<img src="grass1Gausian2.jpg">
+<li>Grass 1 Gaussian 3</li>
+<img src="grass1Gausian3.jpg">
+<li>Grass 1 Gaussian 4</li>
+<img src="grass1Gausian4.jpg">
+<li>Grass 1 Gaussian 5</li>
+<img src="grass1Gausian5.jpg">
+</ol>
+
+<p> Grass 2 Images in Gaussian According to Size </p>
+<ol>
+<li>Grass 2 Gaussian 1</li>
+<img src="grass2Gausian1.jpg">
+<li>Grass 2 Gaussian 2</li>
+<img src="grass2Gausian2.jpg">
+<li>Grass 2 Gaussian 3</li>
+<img src="grass2Gausian3.jpg">
+<li>Grass 2 Gaussian 4</li>
+<img src="grass2Gausian4.jpg">
+<li>Grass 2 Gaussian 5</li>
+<img src="grass2Gausian5.jpg">
+</ol>
+
+<p> Seattle Images in Gaussian, According to Size </p>
+<ol>
+<li>Seattle Gaussian 1</li>
+<img src="Img1Gausian1.jpg">
+<li>Seattle Gaussian 2</li>
+<img src="Img1Gausian2.jpg">
+<li>Seattle Gaussian 3</li>
+<img src="Img1Gausian3.jpg">
+<li>Seattle Gaussian 4</li>
+<img src="Img1Gausian4.jpg">
+<li>Seattle Gaussian 5</li>
+<img src="Img1Gausian5.jpg">
+</ol>
+
+<p> New York Images in Gaussian, According to Size </p>
+<ol>
+<li>NYC Gaussian 1</li>
+<img src="Img2Gausian1.jpg">
+<li>NYC Gaussian 2</li>
+<img src="Img2Gausian2.jpg">
+<li>NYC Gaussian 3</li>
+<img src="Img2Gausian3.jpg">
+<li>NYC Gaussian 4</li>
+<img src="Img2Gausian4.jpg">
+<li>NYC Gaussian 5</li>
+<img src="Img2Gausian5.jpg">
+</ol>
+
+<p> Ocean 2 Images in Gaussian, According to Size </p>
+<ol>
+<li>Ocean 2 Gaussian 1</li>
+<img src="Ocean2Gausian1.jpg">
+<li>Ocean 2 Gaussian 2</li>
+<img src="Ocean2Gausian2.jpg">
+<li>Ocean 2 Gaussian 3</li>
+<img src="Ocean2Gausian3.jpg">
+<li>Ocean 2 Gaussian 4</li>
+<img src="Ocean2Gausian4.jpg">
+<li>Ocean 2 Gaussian 5</li>
+<img src="Ocean2Gausian5.jpg">
+</ol>
+
+<p> Orange Images in Gaussian, According to Size </p>
+<ol>
+<li>Orange Gaussian 1</li>
+<img src="OrangeGausian1.jpg">
+<li>Orange Gaussian 2</li>
+<img src="OrangeGausian2.jpg">
+<li>Orange Gaussian 3</li>
+<img src="OrangeGausian3.jpg">
+<li>Orange Gaussian 4</li>
+<img src="OrangeGausian4.jpg">
+<li>Orange Gaussian 5</li>
+<img src="OrangeGausian5.jpg">
+</ol>
+
+<p> 	LAPLACIAN IMAGE-BLENDING: Laplacian pyramids are built from two images,then a Gaussian pyramid is built from a selected area. The laplacian pyramids are combined together and reconstructed to combine all the images together. Note: The reason why the edge-detection of the apple and orange is not great is because there is too much noise in the original images. </p>
+
+<p> Apple Images in Laplacian, According to Size </p>
+<ol>
+<li>Apple Laplacian 1</li>
+<img src="AppleLap1.jpg">
+<li>Apple Laplacian 2</li>
+<img src="AppleLap2.jpg">
+<li>Apple Laplacian 3</li>
+<img src="AppleLap3.jpg">
+<li>Apple Laplacian 4</li>
+<img src="AppleLap4.jpg">
+</ol>
+
+<p> Grass 1 Images in Laplacian, According to Size </p>
+<ol>
+<li>Grass 1 Laplacian 1</li>
+<img src="grass1Lap1.jpg">
+<li>Grass 1 Laplacian 2</li>
+<img src="grass1Lap2.jpg">
+<li>Grass 1 Laplacian 3</li>
+<img src="grass1Lap3.jpg">
+<li>Grass 1 Laplacian 4</li>
+<img src="grass1Lap4.jpg">
+</ol>
+
+<p> Grass 2 Images in Laplacian, According to Size </p>
+<ol>
+<li>Grass 2 Laplacian 1</li>
+<img src="grass2Lap1.jpg">
+<li>Grass 2 Laplacian 2</li>
+<img src="grass2Lap2.jpg">
+<li>Grass 2 Laplacian 3</li>
+<img src="grass2Lap3.jpg">
+<li>Grass 2 Laplacian 4</li>
+<img src="grass2Lap4.jpg">
+</ol>
+
+<p> Seattle 1 Images in Laplacian, According to Size </p>
+<ol>
+<li>Seattle 1 Laplacian 1</li>
+<img src="Img1Lap1.jpg">
+<li>Seattle 1 Laplacian 2</li>
+<img src="Img1Lap2.jpg">
+<li>Seattle 1 Laplacian 3</li>
+<img src="Img1Lap3.jpg">
+<li>Seattle 1 Laplacian 4</li>
+<img src="Img1Lap4.jpg">
+</ol>
+
+<p> New York Images in Laplacian, According to Size </p>
+<ol>
+<li>NYC Laplacian 1</li>
+<img src="Img2Lap1.jpg">
+<li>NYC Laplacian 2</li>
+<img src="Img2Lap2.jpg">
+<li>NYC Laplacian 3</li>
+<img src="Img2Lap3.jpg">
+<li>NYC Laplacian 4</li>
+<img src="Img2Lap4.jpg">
+</ol>
+
+<p> Ocean 2 Images in Laplacian, According to Size </p>
+<ol>
+<li>Ocean 2 Laplacian 1</li>
+<img src="Ocean2Lap1.jpg">
+<li>Ocean 2 Laplacian 2</li>
+<img src="Ocean2Lap2.jpg">
+<li>Ocean 2 Laplacian 3</li>
+<img src="Ocean2Lap3.jpg">
+<li>Ocean 2 Laplacian 4</li>
+<img src="Ocean2Lap4.jpg">
+</ol>
+
+<p> Orange Images in Laplacian, According to Size </p>
+<ol>
+<li>Orange Laplacian 1</li>
+<img src="OrangeLap1.jpg">
+<li>Orange Laplacian 2</li>
+<img src="OrangeLap2.jpg">
+<li>Orange Laplacian 3</li>
+<img src="OrangeLap3.jpg">
+<li>Orange Laplacian 4</li>
+<img src="OrangeLap4.jpg">
+</ol>
+
+<div style="clear:both" >
+<p> 	REBUILT LAPLACIAN: Upsampling the images of apple, grass 1, ocean 1, and Seattle.</p>
+
+<ol>
+<li>Apple</li>
+<img src="RebuiltLaplacian_apple.jpg">
+<li>Grass 1</li>
+<img src="RebuiltLaplacian_grass.jpg">
+<li>Ocean</li>
+<img src="RebuiltLaplacian_ocean.jpg">
+<li>Seattle</li>
+<img src="RebuiltLaplacian.jpg">
+</ol>
+
+</div>
+
+<h2>Example of Code</h2>
+This is part of the code that generates a Gaussian pyramid for each of the base images.<p>
+
+<pre><code>
+%example code
+def GaussianPyr(img1, img2):
+# generate Gaussian pyramid for img1 and img2
+    Gaus1 = img1.copy()
+    gpyr1 = [Gaus1]
+    Gaus2 = img2.copy()
+    gpyr2 = [Gaus2]
+    
+    for i in xrange(5):
+        Gaus1 = cv2.pyrDown(Gaus1) #decomposes into smaller pyramids
+        gpyr1.append(Gaus1) #adds the gaussian pyramid to the list
+        Gaus2 = cv2.pyrDown(Gaus2)
+        gpyr2.append(Gaus2)
+</code></pre>
+
+<h3>Good Results of Pyramid Blending of Base Images (Apple, Orange, Grass 1 & 2, Ocean 1 & 2, and Seattle).</h3>
+
+<table border=1>
+<tr>
+<td>
+<img src="Pyramid_blending_apporange.jpg" width="24%"/>
+<img src="Pyramid_blending_grass.jpg"  width="24%"/>
+<img src="Pyramid_blending_oceans.jpg" width="24%"/>
+</td>
+</tr>
+
+<h3>Bad Results of Pyramid Blending of Base Images (New York City). The difference between a good and bad result is their difference in gradience, shape, and texture. In the case of the good images, the difference in these three factors are not very big, such as the apple and the orange. However, the difference between Seattle and New York City is overwhelmingly large, thus the reason why this is considered a bad result of pyramid blending.</h3>
+
+<table border=1>
+<tr>
+<td>
+<img src="Pyramid_blending2.jpg" width="24%"/>
+</td>
+</tr>
+
+</table>
+</body>
+</html>
